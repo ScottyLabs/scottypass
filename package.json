@@ -1,42 +1,65 @@
 {
-  "name": "login-api-v2",
-  "description": "",
+  "name": "api-dashboard",
   "version": "0.1.0",
-  "main": "index.js",
-  "scripts": {
-    "start": "node ./dist/index.js",
-    "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' ./src/index.ts",
-    "build": "npx tsc --build tsconfig.json",
-    "lint": "npm run lint:eslint && npm run lint:pretty",
-    "lint:eslint": "eslint . --ext '*/**/*.{js,ts,tsx}' --fix",
-    "lint:pretty": "prettier --write .",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ScottyLabs/login-api-v2.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ScottyLabs/login-api-v2/issues"
-  },
-  "homepage": "https://github.com/ScottyLabs/login-api-v2#readme",
+  "private": true,
   "dependencies": {
-    "@types/mongodb": "^3.6.18",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^12.20.15",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.8",
+    "concurrently": "^6.2.0",
     "express": "^4.17.1",
-    "mongodb": "^3.6.9"
+    "http-proxy-middleware": "^0.19.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:react\" \"npm run dev:server\"",
+    "dev:react": "react-scripts start",
+    "dev:server": "nodemon --watch './server/**/*.ts' --exec 'ts-node' ./server/src/index.ts",
+    "build": "npm run build:react && npm run build:server",
+    "build:react": "react-scripts build",
+    "build:server": "cd server && npx tsc --build ./tsconfig.json",
+    "lint": "npm run lint:eslint-react && npm run lint:eslint-server && npm run lint:pretty",
+    "lint:eslint-react": "eslint {src,public}/**/*.{js,ts,tsx} --fix",
+    "lint:eslint-server": "cd server && eslint ./**/*.{ts,js} --fix",
+    "lint:pretty": "prettier --write .",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
     "@types/express": "^4.17.12",
-    "@typescript-eslint/eslint-plugin": "^4.26.1",
-    "@typescript-eslint/parser": "^4.26.1",
-    "eslint": "^7.28.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
+    "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
     "nodemon": "^2.0.7",
     "prettier": "^2.3.1",
     "ts-node": "^10.0.0",
-    "typescript": "^4.3.2"
+    "typescript": "^4.3.4"
   }
 }

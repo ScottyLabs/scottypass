@@ -1,6 +1,6 @@
 import { ObjectID } from 'mongodb';
 
-export interface LoginResponse {
+export interface LoginRequest {
+  redirectUrl: string;
   applicationId: ObjectID;
-  userID: ObjectID;
 }
