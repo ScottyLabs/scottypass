@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Error <%= errstatus %> - <%= errdetail %></title>
+    <%- include('styles', { root: process.env.ROOT_URL }); %>
+  </head>
+  <body>
+    <div class="container h-100">
+      <div class="row align-items-center h-100">
+        <div class="col-lg-6 col-md-8 col-12 col-sm-12 mx-auto text-center">
+          <img src="<%= root %>/images/scotty-gradient.png" class="w-25 mb-4 circular-image" />
+          <div class="jumbotron py-4 mb-0">
+            <p class="display-4"><%= errstatus %></p>
+            <p class="h2"><%= errdetail %></p>
+            <%if (errmsg) { %>
+            <p><%= errmsg %></p>
+            <% } %>
+            <p>
+              If you believe something is wrong, please contact
+              <a href="https://scottylabs.org">ScottyLabs</a> at hello@scottylabs.org.
+            </p>
+          </div>
+          <%- include('footer', { root: process.env.ROOT_URL }); %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
