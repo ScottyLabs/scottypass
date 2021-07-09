@@ -7,17 +7,17 @@ export enum ErrorTypes {
   ImATeapot = 418,
   InternalServerError = 500,
   NotImplemented = 501,
-  BadGateway = 502
+  BadGateway = 502,
 }
 
 export enum ErrorDetailTypes {
-  BadRequest = "Bad Request",
-  Unauthorized = "Unauthorized",
-  Forbidden = "Forbidden",
-  NotFound = "Resource Not Found",
-  MethodNotAllowed = "Method Not Allowed",
+  BadRequest = 'Bad Request',
+  Unauthorized = 'Unauthorized',
+  Forbidden = 'Forbidden',
+  NotFound = 'Resource Not Found',
+  MethodNotAllowed = 'Method Not Allowed',
   ImATeapot = "I'm A Teapot",
-  InternalServerError = "Internal Server Error",
-  NotImplemented = "Not Implemented",
-  BadGateway = "Bad Gateway"
+  InternalServerError = 'Internal Server Error',
+  NotImplemented = 'Not Implemented',
+  BadGateway = 'Bad Gateway',
 }

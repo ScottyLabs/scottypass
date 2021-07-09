@@ -1,4 +1,4 @@
-import { ErrorDetailTypes, ErrorTypes } from "../../_enums/errorTypes";
+import { ErrorDetailTypes, ErrorTypes } from '../../_enums/errorTypes';
 
 export class SiteError {
   status: ErrorTypes;

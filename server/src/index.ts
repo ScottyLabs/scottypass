@@ -21,8 +21,8 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET || '1',
     resave: false,
-    saveUninitialized: true
-  }),
+    saveUninitialized: true,
+  })
 );
 
 // Initialize Passport
@@ -34,7 +34,11 @@ app.get('/login', (req, res, next) => {
 });
 
 app.all('*', (req, res, next) => {
-  const err = new SiteError(ErrorTypes.NotFound, ErrorDetailTypes.NotFound, 'The link you entered may have been incorrect.');
+  const err = new SiteError(
+    ErrorTypes.NotFound,
+    ErrorDetailTypes.NotFound,
+    'The link you entered may have been incorrect.'
+  );
   next(err);
 });
 
