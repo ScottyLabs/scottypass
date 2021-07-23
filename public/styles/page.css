@@ -1,0 +1,78 @@
+html,
+body {
+  height: 100%;
+  background-color: #1b1c1d;
+}
+
+.image {
+  margin-top: 0px;
+  width: 25%;
+  min-width: 100px;
+}
+
+/* Unused code that may be used later. */
+/* .gradient {
+  background: linear-gradient(
+    90deg,
+    rgba(62, 147, 235, 1) 0%,
+    rgba(182, 33, 201, 1) 50%,
+    rgba(255, 25, 0, 1) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.circular-image {
+  border-radius: 50%;
+}
+
+.jumbotron-dark {
+  background-color: #343a40;
+}
+
+.link-light {
+  color: #0dcaf0;
+}
+
+.link-light:hover {
+  color: #3dd5f3;
+}
