@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Returning...</title>
+  </head>
+  <body>
+    <script>
+      console.log("sending")
+      window.opener.postMessage("<%= response%>", "<%= targetOrigin%>");
+      window.close();
+    </script>
+  </body>
+</html>

@@ -1,6 +1,7 @@
-import { ObjectID } from 'mongodb';
+import mongoose from 'mongoose';
 
 export interface LoginRequest {
   redirectUrl: string;
-  applicationId: ObjectID;
+  restrictDomain: boolean;
+  applicationId: mongoose.Types.ObjectId;
 }

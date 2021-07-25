@@ -1,17 +1,12 @@
-import { ObjectID } from 'mongodb';
-
-export enum Status {
-  Success,
-  Info,
-  Error,
-}
+import mongoose from 'mongoose';
+import { AuditLogStatus } from '../_enums/auditLogStatusTypes';
 
 export interface AuditLog {
-  _id: ObjectID;
-  applicationId: ObjectID;
-  status: Status;
+  _id: mongoose.Types.ObjectId;
+  applicationId: mongoose.Types.ObjectId;
+  status: AuditLogStatus;
   statusCode: 200 | 400 | 500;
-  userId: ObjectID;
+  userId: mongoose.Types.ObjectId;
   createdAt: Date;
   message: string;
 }

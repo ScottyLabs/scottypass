@@ -1,9 +1,9 @@
-import { ObjectID } from 'mongodb';
+import mongoose from 'mongoose';
 
 export interface Application {
-  _id: ObjectID;
-  name: string;
-  publicKey: string;
-  userId: ObjectID;
-  verifyEndpoint: string;
+  _id?: mongoose.Types.ObjectId;
+  name?: string;
+  publicKey?: string;
+  userId?: mongoose.Types.ObjectId;
+  verifyEndpoint?: string;
 }

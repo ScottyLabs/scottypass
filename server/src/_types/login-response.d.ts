@@ -1,6 +1,7 @@
-import { ObjectID } from 'mongodb';
+import mongoose from 'mongoose';
 
 export interface LoginResponse {
-  applicationId: ObjectID;
-  userID: ObjectID;
+  applicationId: mongoose.Types.ObjectId;
+  userID: mongoose.Types.ObjectId;
+  token: string;
 }
