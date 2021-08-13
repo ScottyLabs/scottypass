@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
 import mongoose, { ObjectId } from 'mongoose';
 import session from 'express-session';
 import { SiteError } from './util/errors/error';
@@ -36,7 +37,7 @@ import { generateNonce } from './util/nonce';
   app.use(cors());
   app.set('trust proxy', true);
   app.set('view engine', 'ejs');
-  app.use(express.static('public'));
+  app.use('/static', express.static(path.join(__dirname, 'views', 'static')))
 
   // Initialize Express Session
   app.use(
@@ -199,7 +200,7 @@ import { generateNonce } from './util/nonce';
       req.session.lastQuery = encodeRequest({
         applicationId: new mongoose.Types.ObjectId('0'.repeat(12)),
         restrictDomain: true,
-        redirectUrl: 'http://localhost:3000',
+        redirectUrl: process.env.ROOT_URL ? process.env.ROOT_URL : 'http://localhost:3000',
       });
     }
     const options: AuthenticateOptionsGoogle = {
