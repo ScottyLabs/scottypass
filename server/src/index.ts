@@ -157,8 +157,13 @@ import { generateNonce } from './util/nonce';
     )
   );
 
-  app.get('/login', (req, res, _next) => {
-    res.send('hi');
+  app.get('/login', (_req, _res, next) => {
+    const err = new SiteError(
+      ErrorTypes.NotFound,
+      ErrorDetailTypes.NotFound,
+      'The link you entered may have been incorrect.'
+    );
+    next(err);
   });
 
   app.get('/login/google/redirect', (req, res, next) => {

@@ -26,12 +26,13 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+    "start:server": "doppler run -- node ./server/dist/index.js",
     "dev": "doppler setup -p api-dashboard -c dev && doppler run -- concurrently \"npm run dev:react\" \"npm run dev:server\"",
     "dev:react": "react-scripts start",
     "dev:server": "nodemon --watch './server/**/*.ts' --exec 'ts-node' ./server/src/index.ts",
     "build": "npm run build:react && npm run build:server",
     "build:react": "react-scripts build",
-    "build:server": "cd server && npx tsc --build ./tsconfig.json",
+    "build:server": "rm -rf ./server/dist/views && mkdir ./server/dist/views && cp views/**.ejs ./server/dist/views && cd server && npx tsc --build ./tsconfig.json",
     "lint": "npm run lint:eslint-react && npm run lint:eslint-server && npm run lint:pretty",
     "lint:eslint-react": "eslint {src,public}/**/*.{js,ts,tsx} --fix",
     "lint:eslint-server": "cd server && eslint ./**/*.{ts,js} --fix",
