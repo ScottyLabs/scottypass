@@ -37,7 +37,7 @@ import { generateNonce } from './util/nonce';
   app.use(cors());
   app.set('trust proxy', true);
   app.set('view engine', 'ejs');
-  app.use('/static', express.static(path.join(__dirname, 'views', 'static')))
+  app.use('/static', express.static(path.join(process.cwd(), 'views', 'static')))
 
   // Initialize Express Session
   app.use(
