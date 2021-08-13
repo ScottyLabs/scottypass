@@ -8,5 +8,5 @@ RUN npm install
 COPY --chown=node:node . .
 RUN npm run build:server
 ENTRYPOINT ["doppler", "run", "--"]
-EXPOSE 3000
+EXPOSE 4000
 CMD ["node", "server/dist/index.js"]
