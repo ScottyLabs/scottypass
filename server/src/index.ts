@@ -94,7 +94,7 @@ import { generateNonce } from './util/nonce';
                     email: user.email,
                   },
                   key,
-                  { algorithm: 'RS256', expiresIn: '15 days' }
+                  { algorithm: !application.symmetric ? 'RS256' : 'HS256', expiresIn: '15 days' }
                 );
                 await user.save();
               }
@@ -112,7 +112,7 @@ import { generateNonce } from './util/nonce';
                   email: user.email,
                 },
                 key,
-                { algorithm: 'RS256', expiresIn: '15 days' }
+                { algorithm: !application.symmetric ? 'RS256' : 'HS256', expiresIn: '15 days' }
               );
               await user.save();
 
@@ -137,7 +137,7 @@ import { generateNonce } from './util/nonce';
                 email: newUser.email,
               },
               key,
-              { algorithm: 'RS256', expiresIn: '15 days' }
+              { algorithm: !application.symmetric ? 'RS256' : 'HS256', expiresIn: '15 days' }
             );
             await newUser.save();
             return callback(null, {
@@ -226,7 +226,7 @@ import { generateNonce } from './util/nonce';
       const request = jwt.decode(token) as LoginRequest;
       const application = await Application.findById(request.applicationId);
       if (application) {
-        jwt.verify(token, application.publicKey || '', { algorithms: ['RS256'] });
+        jwt.verify(token, application.publicKey || '', { algorithms: ['HS256', 'RS256'] });
         req.session.lastQuery = encodeRequest(request);
         res.redirect(`/login/google`);
       } else {

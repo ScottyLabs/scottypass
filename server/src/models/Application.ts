@@ -16,6 +16,10 @@ const applicationSchema = new mongoose.Schema({
       return this.name !== "API Dashboard"
     }
   },
+  symmetric: {
+    type: Boolean,
+    default: false,
+  },
   verifyEndpoint: {
     type: String,
     required: true,

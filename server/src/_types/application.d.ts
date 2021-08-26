@@ -5,5 +5,6 @@ export interface Application {
   name?: string;
   publicKey?: string;
   userId?: mongoose.Types.ObjectId;
+  symmetric?: boolean;
   verifyEndpoint?: string;
 }
