@@ -226,7 +226,7 @@ import { generateNonce } from './util/nonce';
       const request = jwt.decode(token) as LoginRequest;
       const application = await Application.findById(request.applicationId);
       if (application) {
-        jwt.verify(token, application.publicKey || '', { algorithms: ['HS256', 'RS256'] });
+        jwt.verify(token, application.publicKey || '', { algorithms: application.symmetric ? ['HS256'] : ['RS256'] });
         req.session.lastQuery = encodeRequest(request);
         res.redirect(`/login/google`);
       } else {
