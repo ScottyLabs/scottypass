@@ -94,7 +94,7 @@ import { generateNonce } from './util/nonce';
                     email: user.email,
                   },
                   key,
-                  { algorithm: !application.symmetric ? 'RS256' : 'HS256', expiresIn: '15 days' }
+                  { algorithm: 'RS256', expiresIn: '15 days' }
                 );
                 await user.save();
               }
@@ -112,7 +112,7 @@ import { generateNonce } from './util/nonce';
                   email: user.email,
                 },
                 key,
-                { algorithm: !application.symmetric ? 'RS256' : 'HS256', expiresIn: '15 days' }
+                { algorithm: 'RS256', expiresIn: '15 days' }
               );
               await user.save();
 
@@ -137,7 +137,7 @@ import { generateNonce } from './util/nonce';
                 email: newUser.email,
               },
               key,
-              { algorithm: !application.symmetric ? 'RS256' : 'HS256', expiresIn: '15 days' }
+              { algorithm: 'RS256', expiresIn: '15 days' }
             );
             await newUser.save();
             return callback(null, {
