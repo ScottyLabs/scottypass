@@ -170,6 +170,7 @@ import { generateNonce } from './util/nonce';
   app.get('/login/google/redirect', (req, res, next) => {
     passport.authenticate('google', function (err, user) {
       const { state } = req.query;
+      console.log(state);
       if (String(state) !== req.session.nonce) {
         return next(
           new SiteError(
@@ -200,7 +201,7 @@ import { generateNonce } from './util/nonce';
       req.session.lastQuery = encodeRequest({
         applicationId: new mongoose.Types.ObjectId('0'.repeat(12)),
         restrictDomain: true,
-        redirectUrl: process.env.ROOT_URL ? process.env.ROOT_URL : 'http://localhost:3000',
+        redirectUrl: process.env.ROOT_URL ? process.env.ROOT_URL : 'http://localhost:4000',
       });
     }
     const options: AuthenticateOptionsGoogle = {
