@@ -68,7 +68,7 @@ import { generateNonce } from './util/nonce';
         clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
         callbackURL: process.env.ROOT_URL
           ? process.env.ROOT_URL + '/login/google/redirect'
-          : 'http://localhost:3000/login/google/redirect',
+          : 'http://localhost:4000/login/google/redirect',
         passReqToCallback: true,
       },
       async (req, _accessToken, _refreshToken, profile, callback) => {
@@ -149,7 +149,7 @@ import { generateNonce } from './util/nonce';
           }
         } catch (err) {
           console.error(err);
-          return callback(err, undefined, {
+          return callback(err as Error, undefined, {
             type: ErrorTypes.InternalServerError,
             detail: ErrorDetailTypes.InternalServerError,
           });
