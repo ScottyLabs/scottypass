@@ -26,6 +26,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+    "start": "npm run build && doppler setup -p api-dashboard -c prd_local && doppler run -- npm run start:server",
     "start:server": "doppler run -- node ./server/dist/index.js",
     "dev": "doppler setup -p api-dashboard -c dev && doppler run -- concurrently \"npm run dev:react\" \"npm run dev:server\"",
     "dev:react": "react-scripts start",
