@@ -17,7 +17,6 @@ const router = Router();
 router.get('/google/redirect', (req, res, next) => {
   passport.authenticate('google', function (err, user) {
     const { state } = req.query;
-    console.log(state);
     if (String(state) !== req.session.nonce) {
       return next(
         new SiteError(

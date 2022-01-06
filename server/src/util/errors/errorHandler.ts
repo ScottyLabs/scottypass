@@ -8,5 +8,6 @@ export const errorHandler = (err: SiteError, req: Request, res: Response, next: 
     errstatus: err.status,
     errdetail: err.detail,
     errmsg: err.msg,
+    targetOrigin: req.headers.referer
   });
 };

@@ -24,5 +24,10 @@
         </div>
       </div>
     </div>
+    <script>
+      if (window.opener) {
+        window.opener.postMessage("error", "<%= targetOrigin%>");
+      }
+    </script>
   </body>
 </html>
