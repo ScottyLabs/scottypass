@@ -3,6 +3,7 @@ import cors from 'cors';
 import path from 'path';
 import mongoose, { ObjectId } from 'mongoose';
 import session from 'express-session';
+import MongoStore from 'connect-mongo';
 import { SiteError } from './util/errors/error';
 import { errorHandler } from './util/errors/errorHandler';
 
@@ -43,6 +44,9 @@ import verifyCallback from './controller/login/verify';
   app.use(
     session({
       secret: process.env.SESSION_SECRET || '1',
+      store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI,
+      }),
       resave: false,
       saveUninitialized: true,
     })
