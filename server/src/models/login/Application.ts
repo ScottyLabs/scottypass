@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Application } from '../_types';
+import { Application } from '../../_types';
 
 const applicationSchema = new mongoose.Schema({
   name: {

@@ -10,7 +10,7 @@ import { ErrorTypes } from '../../_enums/errorTypes';
 import { LoginRequest } from '../../_types';
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
-import Application from '../../models/Application';
+import Application from '../../models/login/Application';
 
 const router = Router();
 

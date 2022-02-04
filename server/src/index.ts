@@ -10,7 +10,7 @@ import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import { ErrorDetailTypes, ErrorTypes } from './_enums/errorTypes';
 import checkDB from './util/checkDB';
-import User from './models/User';
+import User from './models/login/User';
 
 import loginRouter from './controller/login';
 
@@ -35,6 +35,9 @@ import verifyCallback from './controller/login/verify';
   app.set('trust proxy', true);
   app.set('view engine', 'ejs');
   app.use('/static', express.static(path.join(process.cwd(), 'views', 'static')));
+  if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../../build')));
+  }
 
   // Initialize Express Session
   app.use(
@@ -73,10 +76,6 @@ import verifyCallback from './controller/login/verify';
   );
 
   app.use('/login', loginRouter);
-
-  if (process.env.NODE_ENV === 'production') {
-    app.use('/', express.static('../../build'));
-  }
 
   app.all('*', (_req, _res, next) => {
     const err = new SiteError(

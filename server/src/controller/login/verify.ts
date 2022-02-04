@@ -1,8 +1,8 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 
-import Application from '../../models/Application';
-import User from '../../models/User';
+import Application from '../../models/login/Application';
+import User from '../../models/login/User';
 
 import { ErrorDetailTypes, ErrorTypes } from '../../_enums/errorTypes';
 import { StrategyTypes } from '../../_enums/strategyTypes';
@@ -18,6 +18,7 @@ export default async (
   callback: VerifyCallback
 ) => {
   try {
+    console.log(req.session.lastQuery)
     const request = decodeRequest(String(req.session.lastQuery));
     const application = await Application.findById(request.applicationId);
     if (!application) {

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import { StrategyTypes } from '../_enums/strategyTypes';
-import { User } from '../_types';
+import { StrategyTypes } from '../../_enums/strategyTypes';
+import { User } from '../../_types';
 
 const userSchema = new mongoose.Schema({
   applicationId: {
