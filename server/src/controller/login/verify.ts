@@ -18,7 +18,6 @@ export default async (
   callback: VerifyCallback
 ) => {
   try {
-    console.log(req.session.lastQuery)
     const request = decodeRequest(String(req.session.lastQuery));
     const application = await Application.findById(request.applicationId);
     if (!application) {
