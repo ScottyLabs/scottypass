@@ -35,7 +35,7 @@
     "dev:server": "nodemon --watch './server/**/*.ts' --exec 'ts-node' ./server/src/index.ts",
     "build": "npm run build:react && npm run build:server",
     "build:react": "react-scripts build",
-    "build:server": "rm -rf ./server/dist/views && cp -r views ./server/dist && cd server && npx tsc --build ./tsconfig.json",
+    "build:server": "rm -rf ./server/dist/views && mkdir -p ./server/dist && cp -r views ./server/dist/views && cd server && npx tsc --build ./tsconfig.json",
     "lint": "npm run lint:eslint-react && npm run lint:eslint-server && npm run lint:pretty",
     "lint:eslint-react": "eslint {src,public}/**/*.{js,ts,tsx} --fix",
     "lint:eslint-server": "cd server && eslint ./**/*.{ts,js} --fix",
