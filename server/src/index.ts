@@ -46,6 +46,7 @@ import verifyCallback from './controller/login/verify';
       secret: process.env.SESSION_SECRET || '1',
       store: MongoStore.create({
         mongoUrl: process.env.MONGODB_URI,
+        ttl: 60 * 5
       }),
       resave: false,
       saveUninitialized: true,
