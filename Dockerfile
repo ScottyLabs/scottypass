@@ -1,5 +1,4 @@
-FROM node:14-alpine
-RUN apk --no-cache add curl
+FROM node:14
 RUN (curl -Ls https://cli.doppler.com/install.sh || wget -qO- https://cli.doppler.com/install.sh) | sh
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 WORKDIR /home/node/app
