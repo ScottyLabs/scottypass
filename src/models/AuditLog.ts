@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { AuditLog } from '../../_types';
+import { AuditLog } from '../_types';
 
 const auditLogSchema = new mongoose.Schema({
   applicationId: {

@@ -11,11 +11,11 @@ import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import { ErrorDetailTypes, ErrorTypes } from './_enums/errorTypes';
 import checkDB from './util/checkDB';
-import User from './models/login/User';
+import User from './models/User';
 
-import loginRouter from './controller/login';
+import loginRouter from './controller';
 
-import verifyCallback from './controller/login/verify';
+import verifyCallback from './controller/verify';
 
 (async () => {
   try {

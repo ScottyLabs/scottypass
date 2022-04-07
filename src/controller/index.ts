@@ -1,16 +1,16 @@
 import { Router } from 'express';
 import passport from 'passport';
 import { AuthenticateOptionsGoogle } from 'passport-google-oauth20';
-import { encodeRequest } from '../../util/base64';
-import { decodeRequest } from '../../util/base64';
-import { generateNonce } from '../../util/nonce';
-import { SiteError } from '../../util/errors/error';
-import { ErrorDetailTypes } from '../../_enums/errorTypes';
-import { ErrorTypes } from '../../_enums/errorTypes';
-import { LoginRequest } from '../../_types';
+import { encodeRequest } from '../util/base64';
+import { decodeRequest } from '../util/base64';
+import { generateNonce } from '../util/nonce';
+import { SiteError } from '../util/errors/error';
+import { ErrorDetailTypes } from '../_enums/errorTypes';
+import { ErrorTypes } from '../_enums/errorTypes';
+import { LoginRequest } from '../_types';
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
-import Application from '../../models/login/Application';
+import Application from '../models/Application';
 
 const router = Router();
 

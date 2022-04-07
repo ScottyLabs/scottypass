@@ -3,63 +3,25 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.23",
-    "@types/node": "^12.20.15",
-    "@types/react": "^17.0.11",
-    "@types/react-dom": "^17.0.8",
-    "concurrently": "^6.2.0",
     "connect-mongo": "^4.6.0",
     "cors": "^2.8.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
-    "http-proxy-middleware": "^0.19.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.3.1",
     "mongoose": "^5.13.3",
     "passport": "^0.4.1",
-    "passport-google-oauth20": "^2.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
+    "passport-google-oauth20": "^2.0.0"
   },
   "scripts": {
     "start": "npm run build && doppler setup -p api-dashboard -c prd_local && doppler run -- npm run start:server",
-    "start:server": "doppler run -- node ./server/dist/index.js",
-    "dev": "doppler setup -p api-dashboard -c dev && doppler run -- concurrently \"npm run dev:react\" \"npm run dev:server\"",
-    "dev:react": "react-scripts start",
-    "dev:server": "nodemon --watch './server/**/*.ts' --exec 'ts-node' ./server/src/index.ts",
-    "build": "npm run build:react && npm run build:server",
-    "build:react": "react-scripts build",
-    "build:server": "rm -rf ./server/dist/views && mkdir -p ./server/dist/views && cp -r ./views/. ./server/dist/views && cd server && npx tsc --build ./tsconfig.json",
-    "lint": "npm run lint:eslint-react && npm run lint:eslint-server && npm run lint:pretty",
-    "lint:eslint-react": "eslint {src,public}/**/*.{js,ts,tsx} --fix",
-    "lint:eslint-server": "cd server && eslint ./**/*.{ts,js} --fix",
-    "lint:pretty": "prettier --write .",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "start:server": "doppler run -- node ./dist/index.js",
+    "dev": "doppler setup -p api-dashboard -c dev && doppler run -- nodemon --watch './src/**/*.ts' --exec 'ts-node' ./src/index.ts",
+    "build": "rm -rf ./dist/views && mkdir -p ./dist/views && cp -r ./views/. ./dist/views && npx tsc --build ./tsconfig.json",
+    "lint": "npm run lint:eslint-server && npm run lint:pretty",
+    "lint:eslint-server": "eslint ./**/*.{ts,js} --fix",
+    "lint:pretty": "prettier --write ."
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
@@ -71,7 +33,6 @@
     "@typescript-eslint/parser": "^4.28.0",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-react": "^7.24.0",
     "nodemon": "^2.0.7",
     "prettier": "^2.3.1",
     "ts-node": "^10.0.0",

@@ -2,28 +2,17 @@
 
 module.exports = {
   root: true,
-  parser: '@typescript-eslint/parser',
+  parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   plugins: ['@typescript-eslint'],
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
-    'prettier',
-  ],
   parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
+    ecmaVersion: 'latest', // Allows for the parsing of modern ECMAScript features
+    sourceType: 'module', // Allows for the use of imports
     project: './tsconfig.json',
   },
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
   rules: {
-    '@typescript-eslint/camelcase': ['off', { properties: 'never' }],
     '@typescript-eslint/no-var-requires': 0,
     '@typescript-eslint/quotes': ['error', 'single', { avoidEscape: true }],
-    camelcase: 'off',
     'comma-dangle': 2,
     'no-extra-semi': 2,
     'no-irregular-whitespace': 2,
@@ -34,13 +23,7 @@ module.exports = {
     'no-unexpected-multiline': 2,
     'no-unreachable': 'error',
     'object-curly-spacing': ['error', 'always'],
-    curly: 'error',
-    semi: ['error', 'always'],
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
+    semi: 2,
   },
   ignorePatterns: ['.eslintrc.js'],
 };

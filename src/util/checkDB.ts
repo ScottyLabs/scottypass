@@ -1,4 +1,4 @@
-import Application from '../models/login/Application';
+import Application from '../models/Application';
 import mongoose from 'mongoose';
 
 export default async () => {

@@ -1,13 +1,13 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
 
-import Application from '../../models/login/Application';
-import User from '../../models/login/User';
+import Application from '../models/Application';
+import User from '../models/User';
 
-import { ErrorDetailTypes, ErrorTypes } from '../../_enums/errorTypes';
-import { StrategyTypes } from '../../_enums/strategyTypes';
+import { ErrorDetailTypes, ErrorTypes } from '../_enums/errorTypes';
+import { StrategyTypes } from '../_enums/strategyTypes';
 
-import { decodeRequest } from '../../util/base64';
+import { decodeRequest } from '../util/base64';
 import { Profile, VerifyCallback } from 'passport-google-oauth20';
 
 export default async (
