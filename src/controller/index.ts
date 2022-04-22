@@ -68,12 +68,23 @@ router.get('/pubkey', (req, res) => {
 });
 
 router.get('/:token', async (req, res, next) => {
+  console.log(req)
   const { token } = req.params;
   try {
     const request = jwt.decode(token) as LoginRequest;
     const application = await Application.findById(request.applicationId);
     if (application) {
       jwt.verify(token, application.publicKey || '', { algorithms: application.symmetric ? ['HS256'] : ['RS256'] });
+      if (!application.allowedDomains?.includes(request.redirectUrl)) {
+        next(
+          new SiteError(
+            ErrorTypes.Forbidden,
+            ErrorDetailTypes.Forbidden,
+            'The request origin is forbidden.'
+          )
+        );
+        return;
+      }
       req.session.lastQuery = encodeRequest(request);
       res.redirect(`/login/google`);
     } else {
