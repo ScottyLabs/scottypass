@@ -68,7 +68,6 @@ router.get('/pubkey', (req, res) => {
 });
 
 router.get('/:token', async (req, res, next) => {
-  console.log(req)
   const { token } = req.params;
   try {
     const request = jwt.decode(token) as LoginRequest;
