@@ -11,7 +11,6 @@ export default async () => {
       _id: new mongoose.Types.ObjectId('0'.repeat(12)),
       name: 'API Dashboard',
       publicKey: process.env.DASHBOARD_PK,
-      verifyEndpoint: '/authcallback'
     });
     await newApp.save();
   }

@@ -20,10 +20,6 @@ const applicationSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  verifyEndpoint: {
-    type: String,
-    required: true,
-  },
 });
 
 export default mongoose.model<Application>('Application', applicationSchema);
