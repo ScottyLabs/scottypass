@@ -13,17 +13,18 @@ const applicationSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     required: function (this: Application) {
-      return this.name !== "API Dashboard"
-    }
+      return this.name !== 'API Dashboard';
+    },
   },
   symmetric: {
     type: Boolean,
     default: false,
   },
-  verifyEndpoint: {
-    type: String,
-    required: true,
-  },
+  allowedDomains: [
+    {
+      type: String,
+    },
+  ],
 });
 
 export default mongoose.model<Application>('Application', applicationSchema);
