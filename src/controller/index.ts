@@ -11,6 +11,7 @@ import { LoginRequest } from '../_types';
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import Application from '../models/Application';
+import isDomainAllowed from '../util/allowedDomains';
 
 const router = Router();
 
@@ -74,18 +75,12 @@ router.get('/:token', async (req, res, next) => {
     const application = await Application.findById(request.applicationId);
     if (application) {
       jwt.verify(token, application.publicKey || '', { algorithms: application.symmetric ? ['HS256'] : ['RS256'] });
-      if (!application.allowedDomains?.includes(request.redirectUrl)) {
-        next(
-          new SiteError(
-            ErrorTypes.Forbidden,
-            ErrorDetailTypes.Forbidden,
-            'The request origin is forbidden.'
-          )
-        );
+      if (!isDomainAllowed(application.allowedDomains ?? [], request.redirectUrl)) {
+        next(new SiteError(ErrorTypes.Forbidden, ErrorDetailTypes.Forbidden, 'The request origin is forbidden.'));
         return;
       }
       req.session.lastQuery = encodeRequest(request);
-      res.redirect(`/login/google`);
+      res.redirect('/login/google');
     } else {
       next(
         new SiteError(
