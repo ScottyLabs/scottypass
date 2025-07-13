@@ -26,6 +26,7 @@ export default async (
       );
     }
     const key = process.env.DASHBOARD_SK || '';
+    console.log("ENV Key: ", key);
     const user = await User.findOne({ identifier: profile.id, applicationId: request.applicationId });
     if (user !== null) {
       if (user.accessToken !== undefined) {
