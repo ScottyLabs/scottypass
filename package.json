@@ -15,7 +15,7 @@
     "passport-google-oauth20": "^2.0.0"
   },
   "scripts": {
-    "start": "npm run build && doppler setup -p api-dashboard -c prd_local && doppler run -- npm run start:server",
+    "start": "npm run build && npm run start:server",
     "start:server": "doppler run -- node ./dist/index.js",
     "dev": "doppler setup -p api-dashboard -c dev && doppler run -- nodemon --watch './src/**/*.ts' --exec 'ts-node' ./src/index.ts",
     "build": "rm -rf ./dist/views && mkdir -p ./dist/views && cp -r ./views/. ./dist/views && npx tsc --build ./tsconfig.json",
