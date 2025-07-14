@@ -73,7 +73,9 @@ router.get('/:token', async (req, res, next) => {
   try {
     const request = jwt.decode(token) as LoginRequest;
     const application = await Application.findById(request.applicationId);
+    console.log("req, app: ", request, application)
     if (application) {
+      console.log(application.publicKey)
       jwt.verify(token, application.publicKey || '', { algorithms: application.symmetric ? ['HS256'] : ['RS256'] });
       if (!isDomainAllowed(application.allowedDomains ?? [], request.redirectUrl)) {
         next(new SiteError(ErrorTypes.Forbidden, ErrorDetailTypes.Forbidden, 'The request origin is forbidden.'));
