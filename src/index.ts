@@ -82,8 +82,7 @@ import verifyCallback from './controller/verify';
 
   app.use('/login', loginRouter);
 
-  app.all('*', (req, _res, next) => {
-    console.log(req.url);
+  app.all('*', (_req, _res, next) => {
     const err = new SiteError(
       ErrorTypes.NotFound,
       ErrorDetailTypes.NotFound,

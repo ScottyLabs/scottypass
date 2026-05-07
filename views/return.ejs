@@ -5,9 +5,19 @@
   </head>
   <body>
     <script>
-      console.log("sending")
-      window.opener.postMessage("<%= response%>", "<%= targetOrigin%>");
-      window.close();
+      (function () {
+        if (!window.opener) {
+          console.error('No opener found');
+          return;
+        }
+        try {
+          window.opener.postMessage('<%= response%>', '<%= targetOrigin%>');
+        } catch (e) {
+          console.error('postMessage failed', e);
+          return;
+        }
+        window.close();
+      })();
     </script>
   </body>
 </html>
