@@ -16,7 +16,7 @@ import isDomainAllowed from '../util/allowedDomains';
 const router = Router();
 
 router.get('/google/redirect', (req, res, next) => {
-  passport.authenticate('google', function (err, user) {
+  passport.authenticate('google', function (err: any, user: any) {
     const { state } = req.query;
     if (String(state) !== req.session.nonce) {
       return next(
@@ -73,6 +73,7 @@ router.get('/:token', async (req, res, next) => {
   try {
     const request = jwt.decode(token) as LoginRequest;
     const application = await Application.findById(request.applicationId);
+    console.log(application, request.applicationId, await Application.find({}));
     if (application) {
       jwt.verify(token, application.publicKey || '', { algorithms: application.symmetric ? ['HS256'] : ['RS256'] });
       if (!isDomainAllowed(application.allowedDomains ?? [], request.redirectUrl)) {

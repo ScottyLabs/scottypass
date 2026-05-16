@@ -19,7 +19,7 @@ import verifyCallback from './controller/verify';
 
 (async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI || '');
+    await mongoose.connect(process.env.MONGODB_URI || '', { dbName: 'test' });
   } catch (err) {
     console.error(err);
     process.exit(-1);
@@ -46,7 +46,7 @@ import verifyCallback from './controller/verify';
       secret: process.env.SESSION_SECRET || '1',
       store: MongoStore.create({
         mongoUrl: process.env.MONGODB_URI,
-        ttl: 60 * 5
+        ttl: 60 * 5,
       }),
       resave: false,
       saveUninitialized: true,
@@ -57,11 +57,11 @@ import verifyCallback from './controller/verify';
   app.use(passport.initialize());
   app.use(passport.session());
 
-  passport.serializeUser((user, done) => {
+  passport.serializeUser((user: any, done: any) => {
     done(null, user._id);
   });
 
-  passport.deserializeUser((id: ObjectId, done) => {
+  passport.deserializeUser((id: ObjectId, done: any) => {
     User.findById(id, null, null, (err, user) => done(err, user));
   });
 
