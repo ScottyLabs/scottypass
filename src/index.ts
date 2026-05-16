@@ -47,6 +47,7 @@ import verifyCallback from './controller/verify';
       store: MongoStore.create({
         mongoUrl: process.env.MONGODB_URI,
         ttl: 60 * 5,
+        dbName:"test"
       }),
       resave: false,
       saveUninitialized: true,
