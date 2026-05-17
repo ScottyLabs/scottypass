@@ -1,3 +1,8 @@
+# Getting Started 
+
+`npm install` (yes, npm, really)
+`npm dev2` (new version that doesn't require Doppler) Note that you do need a .env file, so go ahead and make one and insert all Railway secrets into it, changing certain things as needed.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
